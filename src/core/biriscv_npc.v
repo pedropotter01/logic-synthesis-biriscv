@@ -294,7 +294,7 @@ wire [NUM_BHT_ENTRIES_W-1:0] gshare_rd_entry_w = global_history_q ^ {pc_f_i_int[
 //-----------------------------------------------------------------
 // Branch prediction bits
 //-----------------------------------------------------------------
-reg [1:0]                    bht_sat_q[NUM_BHT_ENTRIES-1:0];
+reg [2:0]                    bht_sat_q[NUM_BHT_ENTRIES-1:0];
 
 wire [NUM_BHT_ENTRIES_W-1:0] bht_wr_entry_w = GSHARE_ENABLE ? gshare_wr_entry_w : branch_source_i_int[2+NUM_BHT_ENTRIES_W-1:2];
 wire [NUM_BHT_ENTRIES_W-1:0] bht_rd_entry_w = GSHARE_ENABLE ? gshare_rd_entry_w : {pc_f_i_int[3+NUM_BHT_ENTRIES_W-2:3],btb_upper_w};
@@ -305,15 +305,15 @@ if (rst_i)
 begin
     for (i4 = 0; i4 < NUM_BHT_ENTRIES; i4 = i4 + 1)
     begin
-        bht_sat_q[i4] <= 2'd3;
+        bht_sat_q[i4] <= 3'd4; // weakly taken start
     end
 end
-else if (branch_is_taken_i_int && bht_sat_q[bht_wr_entry_w] < 2'd3)
-    bht_sat_q[bht_wr_entry_w] <= bht_sat_q[bht_wr_entry_w] + 2'd1;
-else if (branch_is_not_taken_i_int && bht_sat_q[bht_wr_entry_w] > 2'd0)
-    bht_sat_q[bht_wr_entry_w] <= bht_sat_q[bht_wr_entry_w] - 2'd1;
+else if (branch_is_taken_i_int && bht_sat_q[bht_wr_entry_w] < 3'd7)
+    bht_sat_q[bht_wr_entry_w] <= bht_sat_q[bht_wr_entry_w] + 3'd1;
+else if (branch_is_not_taken_i_int && bht_sat_q[bht_wr_entry_w] > 3'd0)
+    bht_sat_q[bht_wr_entry_w] <= bht_sat_q[bht_wr_entry_w] - 3'd1;
 
-wire bht_predict_taken_w = BHT_ENABLE && (bht_sat_q[bht_rd_entry_w] >= 2'd2);
+wire bht_predict_taken_w = BHT_ENABLE && bht_sat_q[bht_rd_entry_w][2]; // if msb is 1, it's taken
 
 //-----------------------------------------------------------------
 // Branch target buffer
