@@ -1,0 +1,27 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
++define+BHT_VAL=2048
++define+BHT_W_VAL=11
++define+BTB_VAL=64
++define+BTB_W_VAL=6
++define+RAS_VAL=32
++define+RAS_W_VAL=5
+-MESSAGES
+-XLSTIME
+1793999219
+-XLKEEP
+-XLMODE
+./xcelium.d/run.lnx8664.26.03.d
+-RUNMODE
+-CDSLIB
+./xcelium.d/run.lnx8664.26.03.d/cds.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.26.03.d/hdl.var
+-XLNAME
+xrun
+-XLVERSION
+"TOOL:	xrun(64)	26.03-s004"
+-XLNAME
+./xcelium.d/run.lnx8664.26.03.d/server_ci_inovador_2240892

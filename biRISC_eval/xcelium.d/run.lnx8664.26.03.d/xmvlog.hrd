@@ -1,0 +1,16 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-DEFINE
+BHT_VAL=2048
+-DEFINE
+BHT_W_VAL=11
+-DEFINE
+BTB_VAL=64
+-DEFINE
+BTB_W_VAL=6
+-DEFINE
+RAS_VAL=32
+-DEFINE
+RAS_W_VAL=5

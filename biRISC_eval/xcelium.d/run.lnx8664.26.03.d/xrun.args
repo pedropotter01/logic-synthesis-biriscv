@@ -1,0 +1,16 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-64bit
+-timescale
+1ns/1ps
++define+BHT_VAL=2048
++define+BHT_W_VAL=11
++define+BTB_VAL=64
++define+BTB_W_VAL=6
++define+RAS_VAL=32
++define+RAS_W_VAL=5
+biriscv_npc.v
+tb_npc_eval.v
+-nolog

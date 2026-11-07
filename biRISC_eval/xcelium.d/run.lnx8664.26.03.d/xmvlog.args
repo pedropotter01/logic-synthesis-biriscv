@@ -1,0 +1,31 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-XLMODE
+./xcelium.d/run.lnx8664.26.03.d
+-RUNMODE
+-DEFINE
+BHT_VAL=2048
+-DEFINE
+BHT_W_VAL=11
+-DEFINE
+BTB_VAL=64
+-DEFINE
+BTB_W_VAL=6
+-DEFINE
+RAS_VAL=32
+-DEFINE
+RAS_W_VAL=5
+biriscv_npc.v
+tb_npc_eval.v
+-CDSLIB
+./xcelium.d/run.lnx8664.26.03.d/cdsrun.lib
+-HDLVAR
+./xcelium.d/run.lnx8664.26.03.d/hdlrun.var
+-no_analogsolver
+-MESSAGES
+-UPDATE
+-XLLIBSTORE
+./xcelium.d/run.lnx8664.26.03.d/xllibs
+-ALLOWUNBOUND
